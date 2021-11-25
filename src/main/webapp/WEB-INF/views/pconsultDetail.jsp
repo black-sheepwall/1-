@@ -146,13 +146,15 @@ function pconsultdel() {
 									<label for="replyId"><i class="fa fa-user-circle fa-lg"></i></label>
 									&nbsp;&nbsp;${reply.id }&nbsp;&nbsp;${replydate }
 									<c:if test="${id==reply.id }">&nbsp;&nbsp;&nbsp;&nbsp; 
-							 	<span><a onclick="location.href='replyUpdateForm.do?id=${id }&replynum=${reply.replynum}&pnum=${pdetail.pnum}';"
-											class="btn btn-sm btn-primary" style="color: white;">댓글수정</a></span>
+							 		<span>
+							 			<a onclick="location.href='replyUpdateForm.do?id=${id }&replynum=${reply.replynum}&pnum=${pdetail.pnum}';"
+											class="btn btn-sm btn-primary" style="color: white;">댓글수정</a>
+									</span>
 											&nbsp;
 										<form action="replyDeleteAction.do" onsubmit="return chk2()">
-											<input type="hidden" name="pid" value="${pid }"> <input
-												type="hidden" name="prseq" value="${list.prseq }"> <input
-												type="submit" value="댓글삭제"
+											<input type="hidden" name="pid" value="${pid }"> 
+											<input type="hidden" name="prseq" value="${list.prseq }"> 
+											<input type="submit" value="댓글삭제"
 												class="btn btn-sm btn-primary">
 
 										</form>

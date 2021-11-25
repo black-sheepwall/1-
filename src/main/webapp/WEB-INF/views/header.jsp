@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
   <header>
 
-
+<!-- Git hub test -->
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="index?id=${id}"><span>침, 그리고 찌르다</span></a>
