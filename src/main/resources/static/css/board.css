@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+body {	font-family: NanumBarunGothic; text-align: center;	}
+tr { height: 30px; background: #F5F5F5; color: black; text-align: center;}
+/* th {	background: #C9BFED;	} */
+th {	background: #F5F5F5; text-align: center; color: black; }
+td {	background: white; color: black; padding: 10px; text-align: center;	}
