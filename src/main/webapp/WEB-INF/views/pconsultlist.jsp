@@ -78,6 +78,7 @@ body{
             <div class="col" style="border: 1px solid; padding: 13px; border-color: #DCD3D5; color: black"><a href="/board/103">소식</a></div>
 
     </div>
+    							
 	<c:set var="num" value="${pg.total-pg.start+1 }"></c:set>
 	
 	<table style="width: 68%; margin: 0 auto; margin-bottom: 1%">
@@ -117,19 +118,21 @@ body{
 				<td style="width: 180px;">${pdate }</td>
 				<td style="width: 100px;">${plist.pcount }</td>
 			</tr>
-			<c:set var="num" value="${num-1 }"></c:set>
+			<%-- <c:set var="num" value="${num-1 }"></c:set> --%>
 		</c:forEach>
 		</tbody>		
 	</table>
+	<div style="margin: 0 auto; text-align: center;">
 	<c:if test="${pg.startPage > pg.pageBlock}">
-		<a href="pConsultCount?currentPage=${pg.startPage - pg.pageBlock }">[이전]</a>
+		<a class="btn btn-primary btn-sm" href="pConsultCount?currentPage=${pg.startPage - pg.pageBlock }">[이전]</a>
 	</c:if>
 	<c:forEach var="i" begin="${pg.startPage }" end="${pg.endPage }">
-		<a href="pConsultCount?currentPage=${i}">[${i}]</a>
+		<a class="btn btn-primary btn-sm" href="pConsultCount?currentPage=${i}">[${i}]</a>
 	</c:forEach>
 	<c:if test="${pg.endPage > pg.totalPage }">
-		<a href="pConsultCount?currentPage=${pg.startPage + pg.pageBlock}">[다음]</a>
-	</c:if> 
+		<a class="btn btn-primary btn-sm" href="pConsultCount?currentPage=${pg.startPage + pg.pageBlock}">[다음]</a>
+	</c:if>
+	</div> 
 	<c:if test="${id!=null }">
 		<div style="text-align: right; width: 68%; margin: 0 auto; margin-top: 2%; " >
 			<button id="writeclick" type="submit"  style="font-family: NanumBarunGothic;" class="btn btn-info btn-sm">글쓰기</button>

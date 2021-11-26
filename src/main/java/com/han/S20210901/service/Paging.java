@@ -6,12 +6,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Paging {
-	private int currentPage = 1;	private int rowPage = 10;
+	//1번페이지									//10번페이지
+	private int currentPage = 1;	private int rowPage = 5;
+	//페이지 블럭 최대 10까지 [1][2]~[10]
 	private int pageBlock = 10;		private int end;
 	private int start;				private int endPage;
 	private int startPage;			private int totalPage;
 	private int total;
-
+				//     12			    
 	public Paging(int total, String currentPage1) {
 		this.total = total; // 12
 		if(currentPage1 == null) {
@@ -19,12 +21,21 @@ public class Paging {
 		}else {
 			this.currentPage = Integer.parseInt(currentPage1);
 		}
-		
+		// currentPage: 시작block 번호 : 1이면
+		// pagerow1
 		start = (currentPage - 1) * rowPage + 1; // 시작 1
-		end = start + rowPage - 1;
+		//5
+		end = start + rowPage - 1; // 10 즉 start~end : 1~10
+		
+		//	1.2 ->올림해서 2					12		5
+		//3
 		totalPage = (int)Math.ceil((double)total / rowPage);
+		
+	//		pageblock1 =			1								10		
 		startPage = currentPage - (currentPage - 1) % pageBlock;
+	//		10 = 	1		+	10		-1
 		endPage = startPage + pageBlock - 1;
+	//		10	>		1
 		if(endPage > totalPage) {
 			endPage = totalPage;
 		}

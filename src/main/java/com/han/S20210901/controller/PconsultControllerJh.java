@@ -40,7 +40,7 @@ public class PconsultControllerJh {
 		int totalCnt = pconsultService.pConsultTotal();
 		System.out.println("pConsultList() totalCnt ->" + totalCnt);
 		
-		//페이징
+		//페이징 totalCnt = 12,1
 		Paging pg = new Paging(totalCnt, currentPage);
 		
 		pconsult.setStart(pg.getStart());
