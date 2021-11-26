@@ -5,5 +5,6 @@
 		<!-- <typeAlias alias="Member" type="com.oracle.jhBootMybatis02.model.Member"/> -->
 		<typeAlias alias="Pconsult" type="com.han.S20210901.model.Pconsult"/>
 		<typeAlias alias="Replys"   type="com.han.S20210901.model.Replys"/>
+		<typeAlias alias="Clinic" type="com.han.S20210901.model.Clinic"/>
 	</typeAliases>
 </configuration>

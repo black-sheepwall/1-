@@ -26,12 +26,12 @@ public class PconsultControllerJh {
 	private ReplysService replysService;
 	 
 	
-	@RequestMapping(value = "index")
-	public String test1(Model model) {
-		String id = "a1";
-		model.addAttribute("id", id);
-		return "main";
-	}
+//	@RequestMapping(value = "index")
+//	public String test1(Model model) {
+//		String id = "a1";
+//		model.addAttribute("id", id);
+//		return "main";
+//	}
 	
 	@RequestMapping("pConsultCount")
 	public String pConsultList(String id, Model model, Pconsult pconsult) {

@@ -9,7 +9,7 @@
 </head>
 <body>
 <%
-	response.sendRedirect("index");
+	response.sendRedirect("main");
 %>
 
 </body>
