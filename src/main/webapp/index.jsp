@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
+git test
 <%
 	response.sendRedirect("index");
 %>
