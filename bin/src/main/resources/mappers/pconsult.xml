@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pconsult">
+
+	<select id="jhPconsultCnt" resultType="int">
+		select count(*) FROM pconsult
+	</select>
+	<select id="jhPconsultList" parameterType="Pconsult" resultType="Pconsult">
+		select * from pconsult order by pnum desc
+	</select>
+	<select id="jhPconsultDetail" parameterType="int" resultType="Pconsult">
+		select * from pconsult where pnum = #{pnum}
+	</select>
+	<update id="PconsultUpdate" parameterType="Pconsult">
+		update pconsult set ptitle=#{ptitle}, pcontent=#{pcontent}
+				where pnum=#{pnum} 
+	</update>
+	<update id="PcountPlus" parameterType="int">
+		update pconsult set pcount=pcount+1 where pnum=#{pnum}
+	</update>
+	<insert id="PconsultInsert" parameterType="Pconsult">
+		insert into pconsult values(#{id},pconsult_seq.nextval,#{ptitle},sysdate,0,#{pcontent},#{pw})
+	</insert>
+	<delete id="PconsultDelete" parameterType="int">
+		delete from pconsult where pnum=#{pnum}
+	</delete>
+
+</mapper>

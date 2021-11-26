@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Clinic">
+	<select id="HGclinicList" resultType="Clinic">
+		SELECT cnum, MAX(name3) name, CCONTENT, CDATE, empno  , MAX(name) ename
+		FROM (
+				select c.cnum, m.NAME name , c.CCONTENT, c.CDATE, c.empno , '' name3
+				from clinic c, emp e, member m
+				where e.empno = c.empno
+				and e.id = m.id
+				union
+				select c.cnum,'' name , c.CCONTENT, c.CDATE, c.empno , m2.name name3
+				from clinic c, emp e, member m2
+				where e.empno = c.empno
+				and m2.id = c.id
+		)
+		GROUP BY cnum, CCONTENT, CDATE, empno
+		order by 1 desc
+	</select>
+</mapper>
