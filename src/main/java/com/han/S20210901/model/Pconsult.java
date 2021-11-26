@@ -18,4 +18,9 @@ public class Pconsult {
 	private String pcontent;
 	private String ptitle;
 	private String pw;
+	
+	//조회용
+	private String pageNum;  
+	private int start; 		 
+	private int end;
 }

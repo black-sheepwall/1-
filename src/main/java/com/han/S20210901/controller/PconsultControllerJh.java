@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.han.S20210901.model.Pconsult;
 import com.han.S20210901.model.Replys;
+import com.han.S20210901.service.Paging;
 import com.han.S20210901.service.PconsultService;
 import com.han.S20210901.service.ReplysService;
 
@@ -32,12 +33,19 @@ public class PconsultControllerJh {
 	}
 
 	@RequestMapping("pConsultCount")
-	public String pConsultList(String id, Model model, Pconsult pconsult) {
+	public String pConsultList(String currentPage, String id, Model model, Pconsult pconsult) {
 		System.out.println("PcontrollerJh pConsultList() start...");
+		
 		// 1대1상담 게시물 총 개수 구하기
 		int totalCnt = pconsultService.pConsultTotal();
 		System.out.println("pConsultList() totalCnt ->" + totalCnt);
-
+		
+		//페이징
+		Paging pg = new Paging(totalCnt, currentPage);
+		
+		pconsult.setStart(pg.getStart());
+		pconsult.setEnd(pg.getEnd());
+		
 		// 리스트 모두 가져오기
 		List<Pconsult> pConsultList = pconsultService.pConsultAll(pconsult);
 
@@ -45,6 +53,7 @@ public class PconsultControllerJh {
 		model.addAttribute("totalCnt", totalCnt);
 		model.addAttribute("pList", pConsultList);
 		model.addAttribute("id", id);
+		model.addAttribute("pg", pg);
 
 		return "pconsultlist";
 	}
