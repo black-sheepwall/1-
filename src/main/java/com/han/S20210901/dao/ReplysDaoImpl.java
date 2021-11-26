@@ -19,4 +19,24 @@ public class ReplysDaoImpl implements ReplysDao {
 		List<Replys> replys = session.selectList("replysList", pnum);
 		return replys;
 	}
+
+	@Override
+	public void insertReply(Replys reply) {
+		System.out.println("ReplysDaoImpl insertReply Start...");
+		session.insert("insertReply", reply);
+		
+	}
+
+	@Override
+	public void deleteReply(int replynum) {
+		System.out.println("ReplysDaoImpl deleteReply Start...");
+		session.delete("deleteReply", replynum);
+		
+	}
+
+	@Override
+	public int replyUpdate(Replys reply) {
+		int result = session.update("replyUpdate", reply);
+		return result;
+	}
 }

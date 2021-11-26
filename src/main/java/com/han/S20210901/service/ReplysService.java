@@ -8,4 +8,10 @@ public interface ReplysService {
 
 	List<Replys> replysOfPnum(int pnum);
 
+	void insertReply(Replys reply);
+
+	void deleteReply(int replynum);
+
+	int replyupdate(Replys reply);
+
 }

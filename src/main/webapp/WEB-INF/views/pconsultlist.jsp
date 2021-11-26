@@ -99,7 +99,7 @@ body{
 				<td>${plist.id }</td>
 				<!-- 제목 -->
 				<td style="width: 500px; text-align: left;">
-					<a href="pCosultDetail?pnum=${plist.pnum}&id=${id}" style="color: black;">${plist.ptitle }</a>
+					<a href="pConsultDetail?pnum=${plist.pnum}&id=${id}" style="color: black;">${plist.ptitle }</a>
 					<!-- 비밀번호 아이콘 -->
 					<div id="dropdown" style="display: inline-block;">
 						<div class="input-group input-group-sm mb-3" style="width: 100%;">

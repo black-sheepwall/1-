@@ -49,6 +49,15 @@ function pconsultdel() {
 	
 	return true;
 }
+function replydel() {
+	var check;
+	check = confirm("정말 삭제하시겠습니까?");
+	if(check == true){
+		return true;
+	}else if(check == false){
+		return false;
+	}
+}
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +74,7 @@ function pconsultdel() {
 	<body>
 
 	<article>
-
+		
 		<div class="container" style="margin: 5% auto;">
 			<h2>1대1 상담</h2>
 			<hr style="border-top: 3px solid #000000">
@@ -110,8 +119,7 @@ function pconsultdel() {
 			<!------------- 댓글------------- -->
 		
 			<c:if test="${id!=null }">
-				<form action="insertReplyFormAction.do?pid=${pid }" name="frm"
-					onsubmit="return chk()">
+				<form action="insertReply" method="post">
 					<div class="card-body" style="width: 100%; padding-right: 0px;">
 						<ul class="list-group list-group-flush"
 							style="width: 100%; padding-right: 0px;">
@@ -119,13 +127,9 @@ function pconsultdel() {
 								<div class="form-inline mb-2">
 									<label for="replyId"><i class="fa fa-user-circle fa-lg"></i></label>
 									&nbsp;&nbsp;${id} <label for="replyPassword" class="ml-4"><i
-										class="fa fa-lock fa-lg"></i> </label> 
-										<input type="password"
-										class="form-control-sm" placeholder="Enter password"
-										name="passwd2" style="margin-left: 8px;"> 
-										<input
-										type="hidden" name="passwd" value="${member.passwd }">
-										<input type="hidden" name="pid" value="${pid }">
+										class="fa fa-lock fa-lg"></i> </label>
+										<input type="hidden" name="id" value="${id }"> 
+										<input type="hidden" name="pnum" value="${pdetail.pnum}">
 								</div> <textarea class="form-control" id="exampleFormControlTextarea1"
 									rows="3" name="reply"></textarea>
 								<button type="submit" class="btn btn-primary btn-sm "
@@ -146,17 +150,24 @@ function pconsultdel() {
 									<label for="replyId"><i class="fa fa-user-circle fa-lg"></i></label>
 									&nbsp;&nbsp;${reply.id }&nbsp;&nbsp;${replydate }
 									<c:if test="${id==reply.id }">&nbsp;&nbsp;&nbsp;&nbsp; 
-							 		<span>
-							 			<a onclick="location.href='replyUpdateForm.do?id=${id }&replynum=${reply.replynum}&pnum=${pdetail.pnum}';"
-											class="btn btn-sm btn-primary" style="color: white;">댓글수정</a>
-									</span>
+							 			
+							 			
+							 			<!-- 여기 해야함 -->
+							 			<form action="replyUpdateForm">
+							 				<input type="hidden" name="replynum" value="${reply.replynum }">
+							 				<input type="hidden" name="pnum" value="${reply.pnum}">
+							 				<input type="hidden" name="id" value="${reply.id }">
+							 				<input type="submit" value="댓글수정" class="btn btn-sm btn-primary">
+							 					
+										</form>
+										
+										
 											&nbsp;
-										<form action="replyDeleteAction.do" onsubmit="return chk2()">
-											<input type="hidden" name="pid" value="${pid }"> 
-											<input type="hidden" name="prseq" value="${list.prseq }"> 
-											<input type="submit" value="댓글삭제"
-												class="btn btn-sm btn-primary">
-
+										<form action="replyDelete" method="post" onsubmit="return replydel()">
+											<input type="hidden" name="replynum" value="${reply.replynum }">
+											<input type="hidden" name="pnum" value="${reply.pnum}"> 
+											<input type="hidden" name="id" value="${reply.id }">
+											<input type="submit" value="댓글삭제" class="btn btn-sm btn-primary">
 										</form>
 									</c:if>
 								</div>

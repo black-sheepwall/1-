@@ -20,4 +20,24 @@ public class ReplysServiceImpl implements ReplysService {
 		List<Replys> replys = replysDao.replyOfPnum(pnum);
 		return replys;
 	}
+
+	@Override
+	public void insertReply(Replys reply) {
+		System.out.println("ReplysServiceImpl insertReply Start...");
+		replysDao.insertReply(reply);
+	}
+
+	@Override
+	public void deleteReply(int replynum) {
+		System.out.println("ReplysServiceImpl deleteReply() Start...");
+		replysDao.deleteReply(replynum);
+		
+	}
+
+	@Override
+	public int replyupdate(Replys reply) {
+		System.out.println("ReplysServiceImpl replyupdate() Start..");
+		int result = replysDao.replyUpdate(reply);
+		return result;
+	}
 }

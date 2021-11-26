@@ -3,7 +3,16 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Replys">
 	<select id="replysList" parameterType="int" resultType="Replys">
-		select * from replys where pnum=#{pnum}
+		select * from replys where pnum=#{pnum} order by replynum desc
 	</select>
-
+	<insert id="insertReply" parameterType="Replys">
+	insert into replys values(#{id},#{pnum},replys_seq.nextval,#{reply},sysdate,2)
+	</insert>
+	<delete id="deleteReply" parameterType="int">
+		delete from replys where replynum=#{replynum}
+	</delete>
+	<update id="replyUpdate" parameterType="Replys">
+		update replys set reply=#{reply} where replynum=#{replynum} 
+	
+	</update>
 </mapper>
