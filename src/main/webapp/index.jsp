@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>test</h1>
+<h1>test22</h1>
 
 <%
 	response.sendRedirect("index");
