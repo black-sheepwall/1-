@@ -28,6 +28,7 @@ public class PconsultControllerJh {
 	
 	@RequestMapping(value = "index")
 	public String test1(Model model) {
+		System.out.println("안돼...");
 		String id = "a1";
 		model.addAttribute("id", id);
 		return "main";

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+서현 테스트
 <%
 	response.sendRedirect("index");
 %>
